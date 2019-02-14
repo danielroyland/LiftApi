@@ -1,10 +1,16 @@
 ﻿using System.Collections.Generic;
+using System.Net;
+using System.Net.Http;
 using System.Web.Http;
+using LiftApi.Dataaksess;
+using LiftApi.Models;
 
 namespace LiftApi.ApiControllers
 {
     public class BrukerController : ApiController
     {
+        private readonly LiftContext _context = new LiftContext();
+
         // GET api/<controller>
         public IEnumerable<string> Get()
         {
@@ -18,8 +24,12 @@ namespace LiftApi.ApiControllers
         }
 
         // POST api/<controller>
-        public void Post([FromBody]string value)
+        public HttpResponseMessage Post([FromBody]Bruker bruker)
         {
+            _context.Brukere.Add(bruker);
+            _context.SaveChanges();
+
+            return Request.CreateResponse(HttpStatusCode.OK);
         }
 
         // PUT api/<controller>/5
