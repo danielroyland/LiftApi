@@ -91,7 +91,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiControllers\BrukerController.cs" />
-    <Compile Include="ApiControllers\TreningsøktController.cs" />
+    <Compile Include="ApiControllers\TreningsloggController.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Dataaksess\LiftContext.cs" />
     <Compile Include="Global.asax.cs">
@@ -108,6 +108,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Properties\PublishProfiles\LiftApi - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

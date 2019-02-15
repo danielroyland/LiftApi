@@ -8,7 +8,7 @@ using LiftApi.Models;
 
 namespace LiftApi.ApiControllers
 {
-    public class TreningsøktController : ApiController
+    public class TreningsloggController : ApiController
     {
         private readonly LiftContext _context = new LiftContext();
 
