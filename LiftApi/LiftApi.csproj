@@ -17,7 +17,7 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort />
+    <IISExpressSSLPort>44358</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -97,11 +97,16 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApiControllers\AuthorizeLiftAttribute.cs" />
+    <Compile Include="ApiControllers\Attributes\AuthorizeLiftAttribute.cs" />
+    <Compile Include="ApiControllers\Attributes\RequireHttpsAttribute.cs" />
     <Compile Include="ApiControllers\BrukerController.cs" />
+    <Compile Include="ApiControllers\Dtos\LøftDto.cs" />
+    <Compile Include="ApiControllers\Dtos\TreningsøktDto.cs" />
+    <Compile Include="ApiControllers\HelperMethods.cs" />
     <Compile Include="ApiControllers\TreningsloggController.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Dataaksess\LiftContext.cs" />
+    <Compile Include="Enums\TypeLøft.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -109,8 +114,13 @@
     <Compile Include="Migrations\201902141427056_OpprettetTabeller.Designer.cs">
       <DependentUpon>201902141427056_OpprettetTabeller.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904011531387_smallChanges.cs" />
+    <Compile Include="Migrations\201904011531387_smallChanges.Designer.cs">
+      <DependentUpon>201904011531387_smallChanges.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Bruker.cs" />
+    <Compile Include="Models\Løft.cs" />
     <Compile Include="Models\Treningsøkt.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tests\LiftApiTests.cs" />
@@ -132,6 +142,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201902141427056_OpprettetTabeller.resx">
       <DependentUpon>201902141427056_OpprettetTabeller.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904011531387_smallChanges.resx">
+      <DependentUpon>201904011531387_smallChanges.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

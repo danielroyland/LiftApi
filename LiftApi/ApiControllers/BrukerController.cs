@@ -1,36 +1,66 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using LiftApi.ApiControllers.Attributes;
 using LiftApi.Dataaksess;
 using LiftApi.Models;
 
 namespace LiftApi.ApiControllers
 {
     [AuthorizeLift]
+    [RequireHttps]
     public class BrukerController : ApiController
     {
         private readonly LiftContext _context = new LiftContext();
 
-        // GET api/<controller>
-        public IEnumerable<string> Get()
+        public HttpResponseMessage Get()
         {
-            return new string[] { "value1", "value2" };
+            try
+            {
+                var result = _context.Brukere.ToList();
+                var response = Request.CreateResponse(HttpStatusCode.OK, result);
+                return response;
+            }
+            catch (Exception e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e.Message);
+            }
+
         }
 
         // GET api/<controller>/5
-        public string Get(int id)
+        public HttpResponseMessage Get(string brukerId)
         {
-            return "value";
+            try
+            {
+                var result = _context.Brukere.First(x => x.BrukerId == brukerId);
+                var response = Request.CreateResponse(HttpStatusCode.OK, result);
+                return response;
+            }
+            catch (Exception e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e.Message);
+            }
+
         }
 
         // POST api/<controller>
         public HttpResponseMessage Post([FromBody]Bruker bruker)
         {
-            _context.Brukere.Add(bruker);
-            _context.SaveChanges();
+            try
+            {
+                _context.Brukere.Add(bruker);
+                _context.SaveChanges();
 
-            return Request.CreateResponse(HttpStatusCode.OK);
+                return Request.CreateResponse(HttpStatusCode.OK);
+            }
+            catch (Exception e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e.Message);
+            }
+
         }
 
         // PUT api/<controller>/5

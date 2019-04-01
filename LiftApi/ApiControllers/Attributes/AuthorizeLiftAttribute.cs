@@ -3,7 +3,7 @@ using System.Linq;
 using System.Web.Http;
 using System.Web.Http.Controllers;
 
-namespace LiftApi.ApiControllers
+namespace LiftApi.ApiControllers.Attributes
 {
     public class AuthorizeLiftAttribute : AuthorizeAttribute
     {
