@@ -7,6 +7,7 @@ using LiftApi.Models;
 
 namespace LiftApi.ApiControllers
 {
+    [AuthorizeLift]
     public class BrukerController : ApiController
     {
         private readonly LiftContext _context = new LiftContext();

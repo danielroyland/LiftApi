@@ -6,7 +6,7 @@ namespace LiftApi.Models
     {
         public int ID { get; set; }
         public DateTime Dato { get; set; }
-        public virtual Bruker Bruker { get; set; }
+        public string BrukerId { get; set; }
         public virtual Løft Knebøy { get; set; }
         public virtual Løft Benkpress { get; set; }
         public virtual Løft Markløft { get; set; }
@@ -17,7 +17,7 @@ namespace LiftApi.Models
         public int ID { get; set; }
         public TypeLøft TypeLøft { get; set; }
         public int AntallReps { get; set; }
-        public int AntallKg { get; set; }
+        public double AntallKg { get; set; }
         public double TeoretiskMaks { get; set; }
     }
 
